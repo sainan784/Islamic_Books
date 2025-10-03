@@ -1,0 +1,41 @@
+{
+  "name": "islamic-books-library",
+  "version": "1.0.0",
+  "description": "A modern interactive website for uploading and downloading Islamic books/PDFs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon server.js",
+    "client": "cd client && npm start",
+    "client:install": "cd client && npm install",
+    "client:build": "cd client && npm run build",
+    "build": "npm run client:install && npm run client:build",
+    "heroku-postbuild": "npm run build",
+    "render-postbuild": "npm run build",
+    "postinstall": "npm run build"
+  },
+  "keywords": ["books", "pdf", "upload", "download", "islamic", "library"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "multer": "^1.4.5-lts.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "helmet": "^7.0.0",
+    "express-rate-limit": "^6.10.0",
+    "compression": "^1.7.4",
+    "path": "^0.12.7",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": "24.9.0",
+    "npm": ">=10.0.0"
+  }
+}

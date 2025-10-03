@@ -1,0 +1,36 @@
+# Use Node.js LTS version
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy client package files
+COPY client/package*.json ./client/
+
+# Install client dependencies and build
+WORKDIR /app/client
+RUN npm ci --only=production && npm run build
+
+# Go back to app directory
+WORKDIR /app
+
+# Copy application code
+COPY . .
+
+# Create uploads directory
+RUN mkdir -p uploads/books
+
+# Expose port
+EXPOSE 10000
+
+# Set environment to production
+ENV NODE_ENV=production
+
+# Start the application
+CMD ["npm", "start"]
